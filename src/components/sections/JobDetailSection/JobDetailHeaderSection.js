@@ -36,7 +36,15 @@ export default function JobDetailHeaderSection() {
 						ml: 4,
 					}}
 				>
-					<Typography> Business Operations Analyst </Typography>
+					<Typography
+						sx={{
+							fontSize: "18px",
+							fontWeight: 600,
+						}}
+					>
+						{" "}
+						Business Operations Analyst{" "}
+					</Typography>
 					<Typography
 						sx={{
 							display: "flex",

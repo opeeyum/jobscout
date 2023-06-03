@@ -38,7 +38,14 @@ export default function AdditionalInfoSection() {
 					p: 2,
 				}}
 			>
-				<Typography>Additional Information</Typography>
+				<Typography
+					sx={{
+						fontSize: "22px",
+						fontWeight: 600,
+					}}
+				>
+					Additional Information
+				</Typography>
 				<Box
 					sx={{
 						mt: 1.5,

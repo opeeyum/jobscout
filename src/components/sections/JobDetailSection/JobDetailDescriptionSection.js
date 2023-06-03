@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 
 export default function JobDetailDescriptionSection() {
@@ -10,7 +10,15 @@ export default function JobDetailDescriptionSection() {
 					p: 2,
 				}}
 			>
-				<Typography>Job Description </Typography>
+				<Typography
+					sx={{
+						fontSize: "22px",
+						fontWeight: 600,
+					}}
+				>
+					Job Description{" "}
+				</Typography>
+
 				<Box
 					sx={{
 						mt: 1.5,
@@ -19,6 +27,9 @@ export default function JobDetailDescriptionSection() {
 					<Typography
 						sx={{
 							mb: 1,
+
+							fontSize: "18px",
+							fontWeight: 600,
 						}}
 					>
 						Responsibilities of the Candidate:
@@ -55,6 +66,8 @@ export default function JobDetailDescriptionSection() {
 					<Typography
 						sx={{
 							mb: 1,
+							fontSize: "18px",
+							fontWeight: 600,
 						}}
 					>
 						Requirements:
