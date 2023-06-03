@@ -39,18 +39,30 @@ export default function CustomCard() {
 							mb: 2,
 						}}
 					>
-						<Avatar>
-							{/* <img src={jobData.logoUrl} alt="company logo" /> */}
-							R
-						</Avatar>
-						{/* <CircularImage src="path/to/image.jpg" alt="Example" /> */}
-
-						{/* <IconButton aria-label="settings">
-							<ArrowForwardOutlined
-								onClick={() => handleClick()}
+						<Box>
+							<img
+								width="70"
+								height="70"
+								style={{
+									objectFit: "contain",
+									border: "1px solid #808080",
+									borderRadius: "10px",
+								}}
+								alt="Business Operations Analyst / jobs"
+								src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
 							/>
-						</IconButton> */}
-						<OutlinedButton>View Detail</OutlinedButton>
+						</Box>
+
+						<Box>
+							<OutlinedButton
+								sx={{
+									mr: 1,
+								}}
+							>
+								View Detail
+							</OutlinedButton>
+							<OutlinedButton>Apply Now</OutlinedButton>
+						</Box>
 					</Box>
 
 					<Box
