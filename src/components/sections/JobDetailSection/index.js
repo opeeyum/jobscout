@@ -2,6 +2,7 @@ import React from "react";
 import JobDetailHeaderSection from "./JobDetailHeaderSection";
 import { Box, Container } from "@mui/material";
 import JobDetailDescriptionSection from "./JobDetailDescriptionSection";
+import AdditionalInfoSection from "./AdditionalInfoSection";
 
 export default function JobDetailSection() {
 	return (
@@ -31,9 +32,20 @@ export default function JobDetailSection() {
 						// border: "1px solid blue",
 						borderRadius: "5px",
 						backgroundColor: "white",
+						mb: 2,
 					}}
 				>
 					<JobDetailDescriptionSection />
+				</Container>
+				<Container
+					maxWidth="md"
+					sx={{
+						// border: "1px solid blue",
+						borderRadius: "5px",
+						backgroundColor: "white",
+					}}
+				>
+					<AdditionalInfoSection />
 				</Container>
 			</Box>
 		</>

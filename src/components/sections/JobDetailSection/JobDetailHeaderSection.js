@@ -12,7 +12,6 @@ export default function JobDetailHeaderSection() {
 					// border: "1px solid red",
 					display: "flex",
 					p: 2,
-					
 				}}
 			>
 				<img
@@ -45,7 +44,11 @@ export default function JobDetailHeaderSection() {
 							alignItems: "center",
 						}}
 					>
-						<CorporateFare />
+						<CorporateFare
+							style={{
+								marginRight: "8px",
+							}}
+						/>
 						<a
 							href="https://www.google.com"
 							target="_blank"
@@ -61,7 +64,11 @@ export default function JobDetailHeaderSection() {
 							alignItems: "center",
 						}}
 					>
-						<LocationOnTwoTone />
+						<LocationOnTwoTone
+							style={{
+								marginRight: "8px",
+							}}
+						/>
 						Banglore
 					</Typography>
 				</Box>
