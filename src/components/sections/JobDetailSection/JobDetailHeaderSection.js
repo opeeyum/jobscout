@@ -12,6 +12,7 @@ export default function JobDetailHeaderSection() {
 					// border: "1px solid red",
 					display: "flex",
 					p: 2,
+					
 				}}
 			>
 				<img
