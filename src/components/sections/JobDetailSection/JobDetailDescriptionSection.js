@@ -1,7 +1,7 @@
 import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 
-export default function JobDetailDescriptionSection() {
+export default function JobDetailDescriptionSection({description}) {
 	return (
 		<>
 			<Box
@@ -35,7 +35,7 @@ export default function JobDetailDescriptionSection() {
 						Responsibilities of the Candidate:
 					</Typography>
 					<Typography>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						{/* Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Tempore laboriosam temporibus nobis vero aspernatur
 						rerum quis! Vel minima quas animi. Sed ullam veniam
 						impedit ab, iusto nemo perspiciatis, et in expedita
@@ -55,7 +55,8 @@ export default function JobDetailDescriptionSection() {
 						molestias nostrum recusandae perspiciatis veritatis sit
 						deleniti quo voluptas exercitationem voluptates earum?
 						Qui magni at eveniet impedit aliquam illum repellat
-						obcaecati.
+						obcaecati. */}
+						{description}
 					</Typography>
 				</Box>
 				<Box
