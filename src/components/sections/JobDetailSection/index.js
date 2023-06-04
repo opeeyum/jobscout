@@ -42,8 +42,8 @@ export default function JobDetailSection() {
 						borderRadius: "5px",
 						backgroundColor: "white",
 						mb: 2,
-						position: "sticky",
-						top: "62.5px",
+						// position: "sticky",
+						// top: "62.5px",
 					}}
 				>
 					<JobDetailHeaderSection

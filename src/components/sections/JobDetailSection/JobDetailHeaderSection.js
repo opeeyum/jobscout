@@ -1,6 +1,6 @@
 import { CorporateFare, LocationOnTwoTone } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Typography, useScrollTrigger } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import OutlinedButton from "../../common/OutlinedButton";
 
 export default function JobDetailHeaderSection({
@@ -14,14 +14,34 @@ export default function JobDetailHeaderSection({
 		const link = href;
 		window.open(link, "_blank");
 	};
+
+// 	const [hasShadow, setHasShadow] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const scrollTop = window.pageYOffset;
+
+//       if (scrollTop > 100) {
+//         setHasShadow(true);
+//       } else {
+//         setHasShadow(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
 	return (
 		<>
 			<Box
 				sx={{
-					// backgroundColor: "#F6F8FA",
-					// border: "1px solid red",
 					display: "flex",
 					p: 2,
+					// boxShadow: hasShadow
+					// 	? "0px 2px 4px rgba(0, 0, 0, 0.1)"
+					// 	: "none",
 				}}
 			>
 				<img
