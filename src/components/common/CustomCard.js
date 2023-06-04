@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
 	ArrowForwardOutlined,
 	Info,
@@ -51,7 +52,7 @@ export default function CustomCard({ jobData }) {
 					// minHeight:250,
 					marginBottom: 2,
 				}}
-				onClick={() => handleClick()}
+			
 			>
 				<CardContent>
 					<Box
@@ -77,13 +78,14 @@ export default function CustomCard({ jobData }) {
 						</Box>
 
 						<Box>
+						<Link target="_blank" to={`/details/${jobData.id}`}>
 							<OutlinedButton
 								sx={{
 									mr: 1,
 								}}
-							>
-								View Detail
+					>            View Detail
 							</OutlinedButton>
+							</Link>
 							{/* <OutlinedButton>Apply Now</OutlinedButton> */}
 						</Box>
 					</Box>

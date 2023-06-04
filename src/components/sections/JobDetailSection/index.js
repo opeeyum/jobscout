@@ -3,8 +3,12 @@ import JobDetailHeaderSection from "./JobDetailHeaderSection";
 import { Box, Container } from "@mui/material";
 import JobDetailDescriptionSection from "./JobDetailDescriptionSection";
 import AdditionalInfoSection from "./AdditionalInfoSection";
+import { useParams } from 'react-router-dom';
+
 
 export default function JobDetailSection() {
+	let { jobId } = useParams();
+	console.log(jobId);
 	return (
 		<>
 			<Box
