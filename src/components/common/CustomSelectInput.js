@@ -54,7 +54,7 @@ const CustomSelectInput = ({
     placeholder: (styles) => ({
       ...styles,
       // color: theme.palette.text.secondary,
-      fontWeight: 500,
+      // fontWeight: 500,
       fontSize: "16px",
     }),
   };
@@ -79,7 +79,7 @@ const CustomSelectInput = ({
                   marginLeft: 0,
                   marginBottom: "8px",
                   fontSize: "16px",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   lineHeight: "20px",
                   letterSpacing: "-3%",
                   borderRadius: "8px",

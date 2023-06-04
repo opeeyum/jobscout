@@ -18,7 +18,7 @@ const StyledLabel = styled(InputLabel)(({ theme }) => ({
   marginLeft: 0,
   marginBottom: "8px",
   fontSize: "16px",
-  fontWeight: 600,
+  // fontWeight: 600,
   lineHeight: "17px",
   // letterSpacing: "-3%",
 }));
