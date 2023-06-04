@@ -68,6 +68,7 @@ export default function JobDetailSection() {
 					}}
 				>
 					<JobDetailDescriptionSection
+					// <div className="description" dangerouslySetInnerHTML={{ __html: description }}></div>
 						description={allJobs?.value?.description}
 					/>
 				</Container>
