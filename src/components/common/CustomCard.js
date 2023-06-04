@@ -16,10 +16,33 @@ import React from "react";
 import OutlinedButton from "./OutlinedButton";
 import CircularImage from "./CircularImage";
 
-export default function CustomCard() {
+export default function CustomCard({ jobData }) {
+	console.log(jobData, "jobdata");
+
 	const handleClick = () => {
 		console.log("click");
 	};
+
+	const currentDate = new Date(); // Get the current date
+
+	// Assuming the given date is in the format YYYY-MM-DD
+	const givenDate = new Date(jobData?.createdDate);
+
+	// Calculate the time difference in milliseconds
+	const timeDiff = currentDate.getTime() - givenDate.getTime();
+
+	// Calculate the number of days
+	const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+	// Output the result
+	console.log(`${daysDiff} days ago`);
+
+	let dateOutput = `${daysDiff} days ago`;
+
+	if (daysDiff == 0) {
+		dateOutput = "Today";
+	}
+
 	return (
 		<>
 			<Card
@@ -49,7 +72,7 @@ export default function CustomCard() {
 									borderRadius: "10px",
 								}}
 								alt="Business Operations Analyst / jobs"
-								src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
+								src={jobData?.logoUrl}
 							/>
 						</Box>
 
@@ -61,7 +84,7 @@ export default function CustomCard() {
 							>
 								View Detail
 							</OutlinedButton>
-							<OutlinedButton>Apply Now</OutlinedButton>
+							{/* <OutlinedButton>Apply Now</OutlinedButton> */}
 						</Box>
 					</Box>
 
@@ -72,16 +95,16 @@ export default function CustomCard() {
 						}}
 					>
 						<Typography variant="body2" color="text.secondary">
-							Albert Lia
+							{jobData?.companyName}
 						</Typography>
-						<Typography>Albert Lia</Typography>
+						<Typography>{jobData?.title}</Typography>
 						<Typography variant="body2" color="text.secondary">
-							Albert Lia
+							{jobData?.locations}
 						</Typography>
-						<Typography variant="body2" color="text.secondary">
-							<b>Skills : </b>
-							Albert Lia
-						</Typography>
+						{/* <Typography variant="body2" color="text.secondary"> */}
+						{/* <b>Skills : </b> */}
+						{/* Albert Lia */}
+						{/* </Typography> */}
 					</Box>
 
 					<Box
@@ -105,23 +128,8 @@ export default function CustomCard() {
 							>
 								<WatchLater fontSize="small" />
 							</span>
-							Albert Lia
-						</Typography>
-						<Typography
-							variant="body2"
-							color="text.secondary"
-							sx={{
-								display: "flex",
-							}}
-						>
-							<span
-								style={{
-									marginRight: "4px",
-								}}
-							>
-								<Info fontSize="small" />
-							</span>
-							Albert Lia
+							{/* {jobData?.createdDate} */}
+							{dateOutput}
 						</Typography>
 						<Typography
 							variant="body2"
@@ -137,7 +145,26 @@ export default function CustomCard() {
 							>
 								<Work fontSize="small" />
 							</span>
-							Albert Lia
+							{jobData?.label}
+						</Typography>
+						<Typography
+							variant="body2"
+							color="text.secondary"
+							sx={{
+								display: "flex",
+							}}
+						>
+							<span
+								style={{
+									marginRight: "4px",
+								}}
+							>
+								<Info fontSize="small" />
+							</span>
+							{/* {jobData?.applyCount} applicants */}
+							{jobData?.applyCount
+								? jobData?.applyCount + " applicants"
+								: "N/A"}
 						</Typography>
 					</Box>
 				</CardContent>
