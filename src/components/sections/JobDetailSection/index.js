@@ -50,7 +50,11 @@ export default function JobDetailSection() {
 						src={allJobs?.value?.logoUrl}
 						title={allJobs?.value?.title}
 						companyName={allJobs?.value?.companyName}
-						locations={allJobs?.value?.locations}
+						locations={
+							allJobs?.value?.wfhType == 0
+								? allJobs?.value?.locations
+								: "Remote"
+						}
 						href={allJobs?.value?.applyLink}
 					/>
 				</Container>
@@ -63,7 +67,9 @@ export default function JobDetailSection() {
 						mb: 2,
 					}}
 				>
-					<JobDetailDescriptionSection description={allJobs?.value?.description}/>
+					<JobDetailDescriptionSection
+						description={allJobs?.value?.description}
+					/>
 				</Container>
 				<Container
 					maxWidth="md"
