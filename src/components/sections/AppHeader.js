@@ -6,7 +6,7 @@ import Logo from "../common/Icons/Logo";
 function AppHeader() {
 	return (
 		<>
-			<AppBar position="sticky">
+			<AppBar position="sticky" sx={{ backgroundColor: "#537188" }} >
 				<Toolbar>
 					<Box
 						sx={{
