@@ -40,7 +40,7 @@ export default function CustomCard({ jobData }) {
 
 	let dateOutput = `${daysDiff} days ago`;
 
-	if (daysDiff == 0) {
+	if (daysDiff <= 0) {
 		dateOutput = "Today";
 	}
 
