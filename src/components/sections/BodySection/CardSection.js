@@ -4,7 +4,8 @@ import CustomCard from "../../common/CustomCard";
 import axios from "axios";
 
 export default function CardSection() {
-	const apiUrl = 'http://13.126.41.77';
+	//const apiUrl = 'http://13.126.41.77';
+	const apiUrl = 'http://localhost';
 	const [loading, setLoading] = useState(true);
 	const [allJobs, setAllJobs] = useState([]);
 

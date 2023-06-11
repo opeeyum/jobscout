@@ -9,7 +9,8 @@ import axios from "axios";
 export default function JobDetailSection() {
 	let { jobId } = useParams();
 	console.log(jobId);
-	const apiUrl = 'http://13.126.41.77';
+	//const apiUrl = 'http://13.126.41.77';
+	const apiUrl = 'http://localhost';
 	const [loading, setLoading] = useState(true);
 	const [allJobs, setAllJobs] = useState([]);
 
