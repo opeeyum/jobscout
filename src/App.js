@@ -5,11 +5,18 @@ import BodySection from "./components/sections/BodySection";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import JobDetailSection from "./components/sections/JobDetailSection";
 import FooterSection from "./components/sections/FooterSection";
+import LoginForm from "./components/sections/AuthSection/LoginForm";
+import SignUpForm from "./components/sections/AuthSection/SignUpForm";
 
 function App() {
+	const isAuthPage = ["/login", "/sign-up"].includes(
+		window.location.pathname,
+	);
 	return (
 		<>
-			<AppHeader />
+			{/* <AppHeader /> */}
+
+			{!isAuthPage && <AppHeader />}
 
 			<Router>
 				<Routes>
@@ -18,9 +25,12 @@ function App() {
 						path="/details/:jobId"
 						element={<JobDetailSection />}
 					/>
+					<Route path="/login" element={<LoginForm />} />
+					<Route path="/sign-up" element={<SignUpForm />} />
 				</Routes>
 			</Router>
-			<FooterSection />
+			{!isAuthPage && <FooterSection />}
+			{/* <FooterSection /> */}
 		</>
 	);
 }

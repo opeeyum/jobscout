@@ -25,6 +25,13 @@ function AppHeader() {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	const handleLoginClick = () => {
+		// console.log("click");
+		window.open("/login", "_self" )
+		
+	};
+
 	return (
 		<>
 			<AppBar position="sticky" sx={{ backgroundColor: "#537188" }}>
@@ -54,7 +61,7 @@ function AppHeader() {
 								textTransform: "capitalize",
 								transition: "background-color 0.5s ease",
 								"&:hover": {
-								 backgroundColor: "#abc1d3",
+									backgroundColor: "#abc1d3",
 									// backgroundColor: "#bdbdbd",
 									// color:"white"
 								},
@@ -62,6 +69,7 @@ function AppHeader() {
 								fontSize: "16px",
 							}}
 							endIcon={<Login />}
+							onClick={() => handleLoginClick()}
 						>
 							Login
 						</Button>
