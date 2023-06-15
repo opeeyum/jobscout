@@ -9,6 +9,7 @@ export default function JobDetailHeaderSection({
 	companyName,
 	locations,
 	href,
+	companyHref
 }) {
 	const handleApplyNow = () => {
 		const link = href;
@@ -90,7 +91,7 @@ export default function JobDetailHeaderSection({
 							}}
 						/>
 						<a
-							href="https://www.google.com"
+							href={"http://localhost/data/CompanyDetail/"+companyHref}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
