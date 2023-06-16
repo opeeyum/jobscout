@@ -7,6 +7,7 @@ import JobDetailSection from "./components/sections/JobDetailSection";
 import FooterSection from "./components/sections/FooterSection";
 import LoginForm from "./components/sections/AuthSection/LoginForm";
 import SignUpForm from "./components/sections/AuthSection/SignUpForm";
+import CompanyInfoSection from "./components/sections/CompanyInfoSection";
 
 function App() {
 	const isAuthPage = ["/login", "/sign-up"].includes(
@@ -27,6 +28,10 @@ function App() {
 					/>
 					<Route path="/login" element={<LoginForm />} />
 					<Route path="/sign-up" element={<SignUpForm />} />
+					<Route
+						path="/company-details"
+						element={<CompanyInfoSection />}
+					/>
 				</Routes>
 			</Router>
 			{!isAuthPage && <FooterSection />}
