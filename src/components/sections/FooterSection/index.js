@@ -13,7 +13,7 @@ export default function FooterSection() {
 					display: "flex",
 					p: 2,
                     pb:4,
-					mt:12
+					
                  
 				}}
 			>
