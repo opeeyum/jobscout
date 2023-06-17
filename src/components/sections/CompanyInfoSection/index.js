@@ -1,9 +1,31 @@
 import { Circle, PlayCircleFilledTwoTone } from "@mui/icons-material";
 import { Box, Container, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OutlinedButton from "../../common/OutlinedButton";
+import axios from "axios";
 
 export default function CompanyInfoSection() {
+
+	// const apiUrl = 'http://localhost';
+	// const [loading, setLoading] = useState(true);
+	// const [allJobs, setAllJobs] = useState([]);
+
+	// // http://localhost/data/jobDetail/3600839407
+	// useEffect(() => {
+	// 	(async function getAllJobsData() {
+	// 		const resp = await axios.get(`${apiUrl}/data/CompanyDetail/${companyId}`);
+	// 		setAllJobs(resp.data);
+	// 		console.log(resp.data);
+
+	// 		setLoading(false);
+	// 	})();
+	// }, []);
+
+	// console.log(allJobs, "detail page data");
+
+
+
+
 	return (
 		<>
 			<Box

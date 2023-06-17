@@ -2,6 +2,7 @@ import { CorporateFare, LocationOnTwoTone } from "@mui/icons-material";
 import { Box, Typography, useScrollTrigger } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import OutlinedButton from "../../common/OutlinedButton";
+import { Link } from "react-router-dom";
 
 export default function JobDetailHeaderSection({
 	src,
@@ -9,31 +10,31 @@ export default function JobDetailHeaderSection({
 	companyName,
 	locations,
 	href,
-	companyHref
+	companyHref,
 }) {
 	const handleApplyNow = () => {
 		const link = href;
 		window.open(link, "_blank");
 	};
 
-// 	const [hasShadow, setHasShadow] = useState(false);
+	// 	const [hasShadow, setHasShadow] = useState(false);
 
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const scrollTop = window.pageYOffset;
+	//   useEffect(() => {
+	//     const handleScroll = () => {
+	//       const scrollTop = window.pageYOffset;
 
-//       if (scrollTop > 100) {
-//         setHasShadow(true);
-//       } else {
-//         setHasShadow(false);
-//       }
-//     };
+	//       if (scrollTop > 100) {
+	//         setHasShadow(true);
+	//       } else {
+	//         setHasShadow(false);
+	//       }
+	//     };
 
-//     window.addEventListener('scroll', handleScroll);
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
+	//     window.addEventListener('scroll', handleScroll);
+	//     return () => {
+	//       window.removeEventListener('scroll', handleScroll);
+	//     };
+	//   }, []);
 	return (
 		<>
 			<Box
@@ -90,13 +91,19 @@ export default function JobDetailHeaderSection({
 								marginRight: "8px",
 							}}
 						/>
-						<a
+						<Link
+							target="_blank"
+							to={`/company-details/${companyHref}`}
+						>
+							{companyName}
+						</Link>
+						{/* <a
 							href={"http://localhost/data/CompanyDetail/"+companyHref}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							{companyName}
-						</a>
+						</a> */}
 					</Typography>
 					<Typography
 						sx={{

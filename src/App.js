@@ -29,7 +29,7 @@ function App() {
 					<Route path="/login" element={<LoginForm />} />
 					<Route path="/sign-up" element={<SignUpForm />} />
 					<Route
-						path="/company-details"
+						path="/company-details/:companyHref"
 						element={<CompanyInfoSection />}
 					/>
 				</Routes>
