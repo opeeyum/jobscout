@@ -20,7 +20,7 @@ export default function CompanyInfoSection() {
 			const resp = await axios.get(`${apiUrl}/data/CompanyDetail/${companyHref}`);
 			setCompany(resp.data[0]);
 			console.log(resp.data[0]);
-
+			await new Promise(resolve => setTimeout(resolve, 500));
 			setLoading(false);
 		})();
 	}, []);
@@ -35,7 +35,9 @@ export default function CompanyInfoSection() {
 
 	return (
 		<>
-		 {loading && <PageLoader />}
+		{loading ? (
+        <PageLoader />
+      ) : (
 			<Box
 				sx={{
 					backgroundColor: "#F6F8FA",
@@ -175,6 +177,7 @@ export default function CompanyInfoSection() {
 					</Typography>
 				</Container>
 			</Box>
+	  )}
 		</>
 	);
 }
