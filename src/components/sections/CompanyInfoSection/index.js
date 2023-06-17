@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import OutlinedButton from "../../common/OutlinedButton";
 import axios from "axios";
 import PageLoader from "../../common/LoadingIndicators/PageLoader";
+import SalaryTable from "../../common/SalaryTable";
 
 export default function CompanyInfoSection() {
 	let { companyHref } = useParams();
@@ -13,7 +14,7 @@ export default function CompanyInfoSection() {
 	const [loading, setLoading] = useState(true);
 	const [company, setCompany] = useState([]);
 
-	// http://localhost/data/jobDetail/3600839407
+	
 	useEffect(() => {
 		(async function getAllJobsData() {
 			const resp = await axios.get(
@@ -26,12 +27,17 @@ export default function CompanyInfoSection() {
 		})();
 	}, []);
 
-	console.log(company?.linkedin?.bannerURl, "detail page data");
+	// console.log(company?.linkedin?.bannerURl, "detail page data");
 
 	const handleVisitWebsite = () => {
 		const link = company?.value?.linkedin?.website;
 		window.open(link, "_blank");
 	};
+
+
+const salaryData = company?.value?.ambitionBox?.salaryData || [];
+	// console.log(salaryData)
+	
 
 	return (
 		<>
@@ -47,7 +53,7 @@ export default function CompanyInfoSection() {
 					<Container
 						maxWidth="md"
 						sx={{
-							border: "1px solid red",
+							// border: "1px solid red",
 							mb: 2,
 							backgroundColor: "white",
 							p: 2,
@@ -189,7 +195,7 @@ export default function CompanyInfoSection() {
 					<Container
 						maxWidth="md"
 						sx={{
-							border: "1px solid red",
+							// border: "1px solid red",
 
 							backgroundColor: "white",
 							p: 2,
@@ -207,6 +213,19 @@ export default function CompanyInfoSection() {
 						<Typography sx={{ mt: 1 }}>
 							{company?.value?.linkedin?.aboutText}
 						</Typography>
+					</Container>
+					<Container
+						maxWidth="md"
+						sx={{
+							// border: "1px solid red",
+
+							backgroundColor: "white",
+							 p: 2,
+							borderRadius: "5px",
+							mt:4,
+						}}
+					>
+						<SalaryTable salaryData={salaryData} />
 					</Container>
 				</Box>
 			)}
