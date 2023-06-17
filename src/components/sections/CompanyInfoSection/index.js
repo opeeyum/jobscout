@@ -1,29 +1,35 @@
 import { Circle, PlayCircleFilledTwoTone } from "@mui/icons-material";
 import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import OutlinedButton from "../../common/OutlinedButton";
 import axios from "axios";
 
 export default function CompanyInfoSection() {
 
-	// const apiUrl = 'http://localhost';
-	// const [loading, setLoading] = useState(true);
-	// const [allJobs, setAllJobs] = useState([]);
+	let {companyHref} = useParams();
+	console.log(companyHref);
+	const apiUrl = 'http://localhost';
+	const [loading, setLoading] = useState(true);
+	const [company, setCompany] = useState([]);
 
-	// // http://localhost/data/jobDetail/3600839407
-	// useEffect(() => {
-	// 	(async function getAllJobsData() {
-	// 		const resp = await axios.get(`${apiUrl}/data/CompanyDetail/${companyId}`);
-	// 		setAllJobs(resp.data);
-	// 		console.log(resp.data);
+	// http://localhost/data/jobDetail/3600839407
+	useEffect(() => {
+		(async function getAllJobsData() {
+			const resp = await axios.get(`${apiUrl}/data/CompanyDetail/${companyHref}`);
+			setCompany(resp.data[0]);
+			console.log(resp.data[0]);
 
-	// 		setLoading(false);
-	// 	})();
-	// }, []);
+			setLoading(false);
+		})();
+	}, []);
 
-	// console.log(allJobs, "detail page data");
+	console.log(company?.linkedin?.bannerURl, "detail page data");
 
-
+	const handleVisitWebsite = () => {
+		const link = company?.value?.linkedin?.website;
+		window.open(link, "_blank");
+	};
 
 
 	return (
@@ -56,7 +62,7 @@ export default function CompanyInfoSection() {
 							height="180"
 							style={{
 								objectFit: "contain",
-								border: "1px solid #808080",
+								//border: "1px solid #808080",
 								borderRadius: "5px",
 								position: "relative",
 								top: 0,
@@ -64,14 +70,14 @@ export default function CompanyInfoSection() {
 							}}
 							alt="Business Operations Analyst / jobs"
 							// src={src}
-							src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
+							src={company?.value?.linkedin?.bannerURl || "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"}
 						/>
 						<img
 							width="110"
 							height="110"
 							style={{
 								objectFit: "contain",
-								border: "1px solid #808080",
+								//border: "1px solid #808080",
 								// borderRadius: "10px",
 								position: "absolute",
 								top: 120,
@@ -80,7 +86,7 @@ export default function CompanyInfoSection() {
 							}}
 							alt="Business Operations Analyst / jobs"
 							// src={src}
-							src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
+							src={company?.value?.linkedin?.logoUrl || company?.value?.crawlerData?.logoUrl  || "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"}
 						/>
 					</Box>
 					<Box
@@ -99,7 +105,7 @@ export default function CompanyInfoSection() {
 									lineHeight: "38px",
 								}}
 							>
-								Paytm
+								{ company?.value?.linkedin?.nameText || company?.value?.crawlerData?.companyName }
 							</Typography>
 							<Box
 								sx={{
@@ -110,7 +116,7 @@ export default function CompanyInfoSection() {
 									variant="body1"
 									color="text.secondary"
 								>
-									Financial Sevices
+									{ company?.value?.linkedin?.sectorText || company?.value?.crawlerData?.industry }
 								</Typography>
 								<Typography
 									variant="body1"
@@ -128,7 +134,7 @@ export default function CompanyInfoSection() {
 											height: "6px",
 										}}
 									/>{" "}
-									Noida, UttarPradesh
+									{ company?.value?.linkedin?.addressText || company?.value?.crawlerData?.location }
 								</Typography>
 							</Box>
 						</Box>
@@ -137,6 +143,7 @@ export default function CompanyInfoSection() {
 								sx={{
 									borderRadius: "20px",
 								}}
+								onClick={()=>handleVisitWebsite()}
 							>
 								Visit Website
 							</OutlinedButton>
@@ -162,24 +169,7 @@ export default function CompanyInfoSection() {
 						About
 					</Typography>
 					<Typography sx={{ mt: 1 }}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Neque dolorum consectetur quas animi molestiae explicabo
-						ea perferendis sit praesentium. Delectus facere at
-						fugiat nam eum necessitatibus id fugit? Sapiente sunt
-						quas laudantium eum vero excepturi ex, quos iure
-						perspiciatis pariatur possimus a accusamus. Hic totam
-						alias tenetur quos veniam reprehenderit praesentium
-						asperiores cumque exercitationem, earum, sint ipsam nemo
-						fugit. Rerum temporibus nisi vitae dolor deleniti. Lorem
-						ipsum dolor sit amet consectetur adipisicing elit. Eum
-						corrupti earum ipsa animi itaque eaque consectetur!
-						Doloribus nihil quo earum consequatur, officia eum a
-						fugiat itaque hic iure voluptatem, nam culpa vitae
-						debitis repudiandae ad soluta, ratione fuga dolorem
-						voluptatibus illo nulla obcaecati possimus vero! Cum ad
-						assumenda facere obcaecati molestias nihil impedit aut
-						ipsa! Harum quo libero adipisci sunt architecto quos
-						unde assumenda iusto?
+					{ company?.value?.linkedin?.aboutText }
 					</Typography>
 				</Container>
 			</Box>
