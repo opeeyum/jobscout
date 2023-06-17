@@ -5,6 +5,7 @@ import JobDetailDescriptionSection from "./JobDetailDescriptionSection";
 import AdditionalInfoSection from "./AdditionalInfoSection";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import PageLoader from "../../common/LoadingIndicators/PageLoader";
 
 export default function JobDetailSection() {
 	let { jobId } = useParams();
@@ -29,6 +30,7 @@ export default function JobDetailSection() {
 
 	return (
 		<>
+		{loading && <PageLoader />}
 			<Box
 				sx={{
 					backgroundColor: "#F6F8FA",

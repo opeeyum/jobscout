@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OutlinedButton from "../../common/OutlinedButton";
 import axios from "axios";
+import PageLoader from "../../common/LoadingIndicators/PageLoader";
 
 export default function CompanyInfoSection() {
 
@@ -34,6 +35,7 @@ export default function CompanyInfoSection() {
 
 	return (
 		<>
+		 {loading && <PageLoader />}
 			<Box
 				sx={{
 					backgroundColor: "#F6F8FA",
