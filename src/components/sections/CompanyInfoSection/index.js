@@ -101,7 +101,9 @@ export default function CompanyInfoSection() {
 							justifyContent: "space-between",
 						}}
 					>
-						<Box>
+						<Box sx={{
+							width:"82%"
+						}}>
 							<Typography
 								sx={{
 									fontSize: "32px",
@@ -142,7 +144,9 @@ export default function CompanyInfoSection() {
 								</Typography>
 							</Box>
 						</Box>
-						<Box>
+						<Box sx={{
+							width:"18%"
+						}}>
 							<OutlinedButton
 								sx={{
 									borderRadius: "20px",
