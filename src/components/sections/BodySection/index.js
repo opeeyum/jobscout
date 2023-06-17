@@ -8,27 +8,27 @@ export default function BodySection() {
 	return (
 		<div>
 			<BodyHeaderSection />
+
 			<Container
 				maxWidth="md"
 				sx={{
-					// border: "1px solid red",
 					display: "flex",
 				}}
 			>
 				<Box
 					sx={{
 						width: "40%",
+						position: "sticky",
+						top: 110,
+						maxHeight: "80vh",
+						// overflowY: "scroll",
+						zIndex: 999,
+						marginRight: 10,
 					}}
 				>
 					<FilterSection />
 				</Box>
-				<Box
-					sx={{
-						width: "60%",
-						ml:10
-					}}
-				>
-					
+				<Box sx={{ width: "60%" }}>
 					<CardSection />
 				</Box>
 			</Container>

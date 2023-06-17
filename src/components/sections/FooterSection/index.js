@@ -12,7 +12,8 @@ export default function FooterSection() {
 					backgroundColor: "#1B222C",
 					display: "flex",
 					p: 2,
-                    pb:4
+                    pb:4,
+					mt:12
                  
 				}}
 			>
