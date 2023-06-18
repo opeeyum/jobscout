@@ -9,6 +9,10 @@ import {
 } from "@mui/material";
 
 export default function SalaryTable({ salaryData }) {
+	function salary(data){
+		data = data.split('(');
+		return data[0];
+	}
 	return (
 		<TableContainer>
 			<Table>
@@ -44,7 +48,7 @@ export default function SalaryTable({ salaryData }) {
                                 <span style={{
                                     fontSize:"14px"
                                 }}>
-								Experience {data.experience}
+								Experience {salary(data.experience)}
 
                                 </span>
 							</TableCell>
