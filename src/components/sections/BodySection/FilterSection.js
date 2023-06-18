@@ -27,7 +27,15 @@ const FilterSection = () => {
 					</Typography>
 				</div>
 
-				<CustomSelectInput title="Date Posted" />
+				<CustomSelectInput
+					title="Date Posted"
+					options={[
+						{ label: "Today", value: "today" },
+						{ label: "3 days ago", value: "3_days_ago" },
+						{ label: "1 week ago", value: "1_week_ago" },
+					]}
+				/>
+
 				<CustomSelectInput title="Salary Estimate" />
 				<CustomSelectInput title="Job Type" />
 				<CustomTextField title="Company Name" />
