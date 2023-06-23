@@ -30,12 +30,12 @@ export default function CompanyInfoSection() {
 	// console.log(company?.linkedin?.bannerURl, "detail page data");
 
 	const handleVisitWebsite = () => {
-		const link = company?.value?.linkedin?.website;
+		const link = company?.value?.linkedin?.website || company?.value?.value?.linkedin?.website;
 		window.open(link, "_blank");
 	};
 
 
-const salaryData = company?.value?.ambitionBox?.salaryData || [];
+const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.value?.ambitionBox?.salaryData || [];
 	// console.log(salaryData)
 	
 
@@ -81,7 +81,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									company?.value?.linkedin?.bannerURl ||
+									company?.value?.linkedin?.bannerURl || company?.value?.value?.linkedin?.bannerURl ||
 									"https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
 								}
 							/>
@@ -100,7 +100,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									company?.value?.linkedin?.logoUrl ||
+									company?.value?.linkedin?.logoUrl || company?.value?.value?.linkedin?.logoUrl ||
 									company?.value?.crawlerData?.logoUrl ||
 									"https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
 								}
@@ -126,7 +126,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 										lineHeight: "38px",
 									}}
 								>
-									{company?.value?.linkedin?.nameText ||
+									{company?.value?.linkedin?.nameText || company?.value?.value?.linkedin?.nameText ||
 										company?.value?.crawlerData
 											?.companyName}
 								</Typography>
@@ -139,7 +139,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 										variant="body1"
 										color="text.secondary"
 									>
-										{company?.value?.linkedin?.sectorText ||
+										{company?.value?.linkedin?.sectorText || company?.value?.value?.linkedin?.sectorText ||
 											company?.value?.crawlerData
 												?.industry}
 									</Typography>
@@ -160,6 +160,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 											}}
 										/>{" "}
 										{company?.value?.linkedin
+											?.companySizeText  || company?.value?.value?.linkedin
 											?.companySizeText ||
 											company?.value?.crawlerData
 												?.location}
@@ -172,7 +173,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 									variant="body1"
 									color="text.secondary"
 								>
-									{company?.value?.linkedin?.addressText ||
+									{company?.value?.linkedin?.addressText || company?.value?.value?.linkedin?.addressText ||
 										company?.value?.crawlerData?.location}
 								</Typography>
 							</Box>
@@ -211,7 +212,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || [];
 							About
 						</Typography>
 						<Typography sx={{ mt: 1 }}>
-							{company?.value?.linkedin?.aboutText}
+							{company?.value?.linkedin?.aboutText || company?.value?.value?.linkedin?.aboutText}
 						</Typography>
 					</Container>
 					<Container
