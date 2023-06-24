@@ -59,7 +59,7 @@ export default function JobDetailSection() {
                 title={allJobs.value.title}
                 companyName={allJobs.value.companyName}
                 locations={
-                  allJobs.value.wfhType === 0
+                  allJobs.value.wfhType === "0"
                     ? allJobs.value.locations
                     : "Remote"
                 }
@@ -91,7 +91,9 @@ export default function JobDetailSection() {
               backgroundColor: "white",
             }}
           >
-            {allJobs && <AdditionalInfoSection />}
+            {allJobs && <AdditionalInfoSection Location={ allJobs.value.wfhType === "0"
+                    ? allJobs.value.locations
+                    : "Remote"} Salary={allJobs.value.salaryDetail || "N/A"} Role={allJobs.value.roleCategory || "N/A"} Type={allJobs.value.label || "N/A"} />}
           </Container>
         </Box>
       )}
