@@ -55,7 +55,7 @@ export default function JobDetailSection() {
           >
             {allJobs && (
               <JobDetailHeaderSection
-                src={allJobs.value.logoUrl}
+                src={allJobs.value.logoUrl || "/no-img.png" }
                 title={allJobs.value.title}
                 companyName={allJobs.value.companyName}
                 locations={
