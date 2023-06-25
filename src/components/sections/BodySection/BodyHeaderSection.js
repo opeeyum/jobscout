@@ -1,7 +1,19 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField} from "@mui/material";
 import React from "react";
 
-export default function BodyHeaderSection() {
+export default function BodyHeaderSection({filters, setFilters, getAllJobsData}) {
+	const updateWhatContext = (e) => {
+		const val = e.target.value;
+		setFilters(prev => {
+			return {...prev, title:val, tags:val, companyName: val};
+		})
+	};
+	const updateWhereContext = (e) => {
+		const val = e.target.value;
+		setFilters(prev => {
+			return {...prev, locations: val};
+		})
+	};
 	return (
 		<>
 			<Box display="flex" justifyContent="center" alignItems="center">
@@ -19,7 +31,9 @@ export default function BodyHeaderSection() {
 					<TextField
 						id="text-input-what"
 						label="What"
-						placeholder="Job title, keywords, or company"
+						placeholder="Job title, or Keywords"
+						value={filters?.title}
+						onChange={e => updateWhatContext(e)}
 						variant="outlined"
 						size="small"
 						style={{
@@ -75,6 +89,8 @@ export default function BodyHeaderSection() {
 						id="text-input-where"
 						label="Where"
 						placeholder="City, state, or pin code"
+						value={filters.locations}
+						onChange={e => updateWhereContext(e)}
 						variant="outlined"
 						size="small"
 						style={{
@@ -109,6 +125,7 @@ export default function BodyHeaderSection() {
 							marginBottom: "8px",
 							ml: 2,
 						}}
+						onClick={() => getAllJobsData()}
 					>
 						Find jobs
 					</Button>

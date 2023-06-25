@@ -3,23 +3,20 @@ import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OutlinedButton from "../../common/OutlinedButton";
-import axios from "axios";
 import PageLoader from "../../common/LoadingIndicators/PageLoader";
 import SalaryTable from "../../common/SalaryTable";
+import makeApiCall from "../../../utils/makeApiCall";
 
 export default function CompanyInfoSection() {
 	let { companyHref } = useParams();
 	console.log(companyHref);
-	const apiUrl = "http://localhost";
 	const [loading, setLoading] = useState(true);
 	const [company, setCompany] = useState([]);
 
 	
 	useEffect(() => {
 		(async function getAllJobsData() {
-			const resp = await axios.get(
-				`${apiUrl}/data/CompanyDetail/${companyHref}`,
-			);
+			const resp = await makeApiCall('GET',`/data/CompanyDetail/${companyHref}`);
 			setCompany(resp.data[0]);
 			console.log(resp.data[0]);
 			await new Promise((resolve) => setTimeout(resolve, 500));
