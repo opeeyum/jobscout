@@ -6,26 +6,26 @@ import WorkDetailIcon from "../../common/Icons/WorkDetailIcon";
 import LocationIcon from "../../common/Icons/LocationIcon";
 import BaseCard from "../../common/BaseCard";
 
-export default function AdditionalInfoSection() {
+export default function AdditionalInfoSection({Location,Salary,Role,Type}) {
 	const cardsData = [
 		{
 			title: "Job Location(s)",
-			description: "Bangalore",
+			description: Location,
 			icon: <LocationIcon />,
 		},
 		{
 			title: "Salary",
-			description: "Salary : Not Disclosed",
+			description: Salary,
 			icon: <SalaryIcon />,
 		},
 		{
-			title: "Work Detail",
-			description: "Working Days: 5 Days",
+			title: "Role",
+			description: Role,
 			icon: <WorkDetailIcon />,
 		},
 		{
 			title: "Job Type",
-			description: "Job Type: On Field",
+			description: Type,
 			icon: <JobTiming />,
 		},
 	];

@@ -44,6 +44,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 				<Box
 					sx={{
 						backgroundColor: "#F6F8FA",
+					
 						// p: 2,
 					}}
 				>
@@ -78,8 +79,8 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									company?.value?.linkedin?.bannerURl || company?.value?.value?.linkedin?.bannerURl ||
-									"https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
+									 company?.value?.linkedin?.bannerURl || company?.value?.value?.linkedin?.bannerURl ||
+									"/Image_not_available.png"
 								}
 							/>
 							<img
@@ -99,7 +100,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 								src={
 									company?.value?.linkedin?.logoUrl || company?.value?.value?.linkedin?.logoUrl ||
 									company?.value?.crawlerData?.logoUrl ||
-									"https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6479f3e6e0f92_Screenshot_2023-01-04_at_2.00.35_PM.png?d=110x110"
+									"/no-img.png"
 								}
 							/>
 						</Box>
@@ -140,7 +141,10 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 											company?.value?.crawlerData
 												?.industry}
 									</Typography>
-									<Typography
+									{
+										company?.value?.linkedin
+										?.companySizeText && 
+										<Typography
 										variant="body1"
 										color="text.secondary"
 										sx={{
@@ -162,6 +166,8 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 											company?.value?.crawlerData
 												?.location}
 									</Typography>
+									}
+									
 								</Box>
 								<Typography
 									sx={{
@@ -190,7 +196,10 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 							</Box>
 						</Box>
 					</Container>
-					<Container
+
+					{
+						company?.value?.linkedin?.aboutText  && 
+						<Container
 						maxWidth="md"
 						sx={{
 							// border: "1px solid red",
@@ -200,6 +209,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 							borderRadius: "5px",
 						}}
 					>
+
 						<Typography
 							sx={{
 								fontSize: "24px",
@@ -212,7 +222,10 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 							{company?.value?.linkedin?.aboutText || company?.value?.value?.linkedin?.aboutText}
 						</Typography>
 					</Container>
-					<Container
+					}
+					{
+						salaryData.length>1 && 
+						<Container
 						maxWidth="md"
 						sx={{
 							// border: "1px solid red",
@@ -221,10 +234,14 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 							 p: 2,
 							borderRadius: "5px",
 							mt:4,
+							
 						}}
 					>
 						<SalaryTable salaryData={salaryData} />
 					</Container>
+					}
+					
+				
 				</Box>
 			)}
 		</>

@@ -52,11 +52,11 @@ export default function JobDetailSection() {
           >
             {allJobs && (
               <JobDetailHeaderSection
-                src={allJobs.value.logoUrl}
+                src={allJobs.value.logoUrl || "/no-img.png" }
                 title={allJobs.value.title}
                 companyName={allJobs.value.companyName}
                 locations={
-                  allJobs.value.wfhType === 0
+                  allJobs.value.wfhType === "0"
                     ? allJobs.value.locations
                     : "Remote"
                 }
@@ -88,7 +88,9 @@ export default function JobDetailSection() {
               backgroundColor: "white",
             }}
           >
-            {allJobs && <AdditionalInfoSection />}
+            {allJobs && <AdditionalInfoSection Location={ allJobs.value.wfhType === "0"
+                    ? allJobs.value.locations
+                    : "Remote"} Salary={allJobs.value.salaryDetail || "N/A"} Role={allJobs.value.roleCategory || "N/A"} Type={allJobs.value.label || "N/A"} />}
           </Container>
         </Box>
       )}
