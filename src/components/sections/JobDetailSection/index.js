@@ -4,21 +4,18 @@ import { Box, Container } from "@mui/material";
 import JobDetailDescriptionSection from "./JobDetailDescriptionSection";
 import AdditionalInfoSection from "./AdditionalInfoSection";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import PageLoader from "../../common/LoadingIndicators/PageLoader";
+import makeApiCall from "../../../utils/makeApiCall";
 
 export default function JobDetailSection() {
   let { jobId } = useParams();
   console.log(jobId);
-  //const apiUrl = 'http://13.126.41.77';
-  const apiUrl = 'http://localhost';
   const [loading, setLoading] = useState(true);
   const [allJobs, setAllJobs] = useState(null);
 
-  // http://localhost/data/jobDetail/3600839407
   useEffect(() => {
-    (async function getAllJobsData() {
-      const resp = await axios.get(`${apiUrl}/data/jobDetail/${jobId}`);
+    (async function getJobData() {
+      const resp = await makeApiCall('GET', `/data/jobDetail/${jobId}`);
       setAllJobs(resp.data);
       console.log(resp.data);
 

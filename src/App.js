@@ -8,6 +8,7 @@ import FooterSection from "./components/sections/FooterSection";
 import LoginForm from "./components/sections/AuthSection/LoginForm";
 import SignUpForm from "./components/sections/AuthSection/SignUpForm";
 import CompanyInfoSection from "./components/sections/CompanyInfoSection";
+import Layout from "./components/common/Layout";
 
 function App() {
 	const isAuthPage = ["/login", "/sign-up"].includes(
@@ -20,19 +21,21 @@ function App() {
 			{!isAuthPage && <AppHeader />}
 
 			<Router>
-				<Routes>
-					<Route path="/" element={<BodySection />} />
-					<Route
-						path="/details/:jobId"
-						element={<JobDetailSection />}
-					/>
-					<Route path="/login" element={<LoginForm />} />
-					<Route path="/sign-up" element={<SignUpForm />} />
-					<Route
-						path="/company-details/:companyHref"
-						element={<CompanyInfoSection />}
-					/>
-				</Routes>
+				<Layout>
+					<Routes>
+						<Route path="/" element={<BodySection />} />
+						<Route
+							path="/details/:jobId"
+							element={<JobDetailSection />}
+						/>
+						<Route path="/login" element={<LoginForm />} />
+						<Route path="/sign-up" element={<SignUpForm />} />
+						<Route
+							path="/company-details/:companyHref"
+							element={<CompanyInfoSection />}
+						/>
+					</Routes>
+				</Layout>
 			</Router>
 			{!isAuthPage && <FooterSection />}
 			{/* <FooterSection /> */}
