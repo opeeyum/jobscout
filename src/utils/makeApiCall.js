@@ -1,6 +1,6 @@
 import axios from "axios";
-// const apiUrl = 'http://13.200.99.228';
-const apiUrl = 'http://localhost';
+const apiUrl = 'https://api.jobscout.work';
+// const apiUrl = 'http://localhost';
 
 const makeApiCall = (method, url, payload = null, headers = {}) => {
   return new Promise((resolve, reject) => {
