@@ -1,7 +1,7 @@
 import { Box, Button, TextField} from "@mui/material";
 import React from "react";
 
-export default function BodyHeaderSection({filters, setFilters, getAllJobsData}) {
+export default function BodyHeaderSection({filters, setFilters, onApplyFilterHandler}) {
 	const updateWhatContext = (e) => {
 		const val = e.target.value;
 		setFilters(prev => {
@@ -125,7 +125,7 @@ export default function BodyHeaderSection({filters, setFilters, getAllJobsData})
 							marginBottom: "8px",
 							ml: 2,
 						}}
-						onClick={() => getAllJobsData()}
+						onClick={() => onApplyFilterHandler()}
 					>
 						Find jobs
 					</Button>
