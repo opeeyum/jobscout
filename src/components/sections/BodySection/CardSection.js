@@ -1,35 +1,24 @@
 import { Container, Grid, Pagination } from "@mui/material";
-import React, { useState } from "react";
+import React  from "react";
 import CustomCard from "../../common/CustomCard";
 import PageLoader from "../../common/LoadingIndicators/PageLoader";
 
-export default function CardSection({loading, allJobs}) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+export default function CardSection({loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}) {
 
-  // Calculate index of the first and last item to be displayed on the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentJobs = allJobs?.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Change page
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
 
   return (
     <>
       {loading && <PageLoader />}
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          {currentJobs?.map((e) => (
+          {allJobs?.map((e) => (
             <CustomCard key={e.key} jobData={e.value} />
           ))}
         </Grid>
         <Grid item xs={12} mt={2}>
           <Container maxWidth="sm" align="center">
             <Pagination
-              count={Math.ceil(allJobs?.length / itemsPerPage)}
+              count={Math.ceil(jobCount / itemsPerPage)}
               page={currentPage}
               onChange={handlePageChange}
               color="primary"

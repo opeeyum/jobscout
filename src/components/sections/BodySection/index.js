@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import BodyHeaderSection from "./BodyHeaderSection";
 import CardSection from "./CardSection";
 import FilterSection from "./FilterSection";
@@ -12,24 +12,47 @@ export default function BodySection() {
 	const {filters, setFilters} = useContext(FilterContext);
 	const {subFilters, setSubFilters} = useContext(SubFilterContext);
 	const [loading, setLoading] = useState(false);
-  	const [allJobs, setAllJobs] = useState([]);
+	const [allJobs, setAllJobs] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [jobCount, setJobCount] = useState(1000);
+	const [itemsPerPage] = useState(10);
 
-	async function getAllJobsData() {
+	// Change page
+	const handlePageChange = (event, value) => {
+		setCurrentPage(value);
+		const skip = (value - 1) * itemsPerPage;
+		getAllJobsData(skip, itemsPerPage);
+	};
+
+	async function getAllJobsData(skip, itemsPerPage) {
 		try {
 			setLoading(true);
 			const payLoad = applyFilter({filters, subFilters});
-			const resp = await makeApiCall('POST', '/data/v1/1', payLoad);
-			setAllJobs(resp.data);
+			const resp = await makeApiCall('POST', `/data/v1?offset=${skip}&count=${itemsPerPage}`, payLoad);
+			setAllJobs(resp?.data?.data || []);
+			setJobCount(resp?.data?.totalCount || 0);
 			setLoading(false);
 		} catch (error) {
 			console.log("Error fetching jobs data:", error);
 		}
 	};
-	useEffect(() => {getAllJobsData()}, []);
-	useEffect(() => {getAllJobsData()}, [subFilters]);
+
+	const onApplyFilterHandler = () => {
+		setCurrentPage(1);
+		getAllJobsData(0, itemsPerPage);
+	}
+
+	useEffect(() => {
+		getAllJobsData(0, itemsPerPage);
+	}, []);
+
+	useEffect(() => {
+		onApplyFilterHandler();
+	}, [subFilters]);
+
 	return (
 		<div>
-			<BodyHeaderSection {...{filters, setFilters, getAllJobsData}}/>
+			<BodyHeaderSection {...{filters, setFilters, onApplyFilterHandler}}/>
 
 			<Container
 				maxWidth="md"
@@ -51,7 +74,7 @@ export default function BodySection() {
 					<FilterSection {...{subFilters, setSubFilters}}/>
 				</Box>
 				<Box sx={{ width: "60%" }}>
-					<CardSection {...{loading, allJobs}}/>
+					<CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/>
 				</Box>
 			</Container>
 		</div>
