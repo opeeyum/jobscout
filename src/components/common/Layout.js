@@ -12,7 +12,7 @@ const Layout = ({children}) => {
     const defaultSubFilters = {
         createdDate: '',
         label: '',
-        companyName: '',
+        companyName: [],
     };
     const [filters, setFilters] = useState(defaultFilters);
     const [subFilters, setSubFilters] = useState(defaultSubFilters);
