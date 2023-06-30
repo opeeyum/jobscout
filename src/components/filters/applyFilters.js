@@ -21,7 +21,7 @@ const createApiPayload = ({filters, subFilters}) => {
         payload['locations'] = locations;
     }
     if (companyName?.length) {
-        payload['companyName'] = companyName;
+        payload['companyName'] = companyName.map(({label}) => label);
     }
     if (createdDate?.length) {
         const dayDiff = parseInt(createdDate);

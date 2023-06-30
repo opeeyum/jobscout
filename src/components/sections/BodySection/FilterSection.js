@@ -11,17 +11,23 @@ import {
 import React, { useState } from "react";
 import CustomTextField from "../../common/CustomTextField";
 import CustomSelectInput from "../../common/CustomSelectInput";
+import FilterSelect from "../../filters/filterSelect";
 
 const FilterSection = ({subFilters, setSubFilters}) => {
 	const updateCreatedDate = (e) => {
 		setSubFilters(prev => {
 			return {...prev, createdDate: e};
-		})
+		});
 	};
 	const updateJobType = (e) => {
 		setSubFilters(prev => {
 			return {...prev, label: e};
-		})
+		});
+	};
+	const updateCompanyName = (val) => {
+		setSubFilters(prev => {
+			return {...prev, companyName:val}
+		});
 	};
 	const [createdDate, setCreatedDate] = useState(subFilters?.createdDate?.label);
 	const [jobType, setJobType] = useState(subFilters?.label?.label);
@@ -64,7 +70,7 @@ const FilterSection = ({subFilters, setSubFilters}) => {
 					onChange = {e => updateJobType(e)}
 				/>
 				{/* Company Name i.e Employer */}
-				<CustomTextField title="Company Name" />
+				<FilterSelect {...{name:'companyName', title:'Company Name', updateCompanyName}} />
 			</Box>
 		</>
 	);
