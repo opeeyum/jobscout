@@ -10,6 +10,7 @@ import {
 	MenuItem,
 	Toolbar,
 	Tooltip,
+	useMediaQuery,
 } from "@mui/material";
 import React from "react";
 
@@ -32,13 +33,29 @@ function AppHeader() {
 		
 	};
 
+	const maxWidth = useMediaQuery("(max-width:650px)")
+    const responsiveHeader ={
+		backgroundColor: "#537188",
+		width:"100%",
+		
+	}
+ const desktopHeader ={
+	backgroundColor: "#537188"
+ }
+
 	return (
 		<>
-			<AppBar position="sticky" sx={{ backgroundColor: "#537188" }}>
+			<AppBar position="sticky"  sx={
+  
+	maxWidth?responsiveHeader:desktopHeader
+	
+	
+    
+  }>
 				<Toolbar>
 					<Box
 						sx={{
-							flexGrow: 1,
+							// flexGrow: 1,
 						}}
 					>
 						<Logo />
@@ -46,14 +63,14 @@ function AppHeader() {
 					<Box
 						sx={{
 							display: "flex",
-							maxWidth: "620px",
-							width: "100%",
+							// maxWidth: "620px",
+							// width: "100%",
 							justifyContent: "flex-end",
 
 							alignItems: "center",
 						}}
 					>
-						<Button
+						{/* <Button
 							variant="contained"
 							sx={{
 								backgroundColor: "#DDE6ED",
@@ -72,9 +89,9 @@ function AppHeader() {
 							onClick={() => handleLoginClick()}
 						>
 							Login
-						</Button>
+						</Button> */}
 
-						<Tooltip title="Account settings">
+						{/* <Tooltip title="Account settings">
 							<IconButton
 								onClick={handleClick}
 								size="small"
@@ -87,7 +104,7 @@ function AppHeader() {
 									T
 								</Avatar>
 							</IconButton>
-						</Tooltip>
+						</Tooltip> */}
 
 						<Menu
 							anchorEl={anchorEl}

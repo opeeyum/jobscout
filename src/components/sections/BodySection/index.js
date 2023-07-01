@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import BodyHeaderSection from "./BodyHeaderSection";
 import CardSection from "./CardSection";
 import FilterSection from "./FilterSection";
-import { Box, Container } from "@mui/material";
+import { Box, Container, useMediaQuery } from "@mui/material";
 import FilterContext from "../../contexts/FilterContext";
 import SubFilterContext from "../../contexts/SubFilterContext";
 import makeApiCall from "../../../utils/makeApiCall";
@@ -50,6 +50,8 @@ export default function BodySection() {
 		onApplyFilterHandler();
 	}, [subFilters]);
 
+	const maxWidth = useMediaQuery("(max-width:650px)")
+
 	return (
 		<div>
 			<BodyHeaderSection {...{filters, setFilters, onApplyFilterHandler}}/>
@@ -60,7 +62,8 @@ export default function BodySection() {
 					display: "flex",
 				}}
 			>
-				<Box
+				{
+					!maxWidth && <Box
 					sx={{
 						width: "40%",
 						position: "sticky",
@@ -73,8 +76,10 @@ export default function BodySection() {
 				>
 					<FilterSection {...{subFilters, setSubFilters}}/>
 				</Box>
+				}
+				
 				<Box sx={{ width: "60%" }}>
-					<CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/>
+					{/* <CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/> */}
 				</Box>
 			</Container>
 		</div>
