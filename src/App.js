@@ -36,7 +36,7 @@ function App() {
 					</Routes>
 				</Layout>
 			</Router>
-			{/* {!isAuthPage && <FooterSection />} */}
+			{!isAuthPage && <FooterSection />}
 			{/* <FooterSection /> */}
 		</>
 	);

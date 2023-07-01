@@ -12,8 +12,6 @@ export default function FooterSection() {
 					p: 2,
                     pb:4,
 					mt:12
-		
-		
 	   }
 	
 	   const responsiveStyles={
@@ -21,7 +19,9 @@ export default function FooterSection() {
 		display:"flex",
 		flexDirection:"column",
 		pb:4,
-					mt:16
+		mt:16,
+		position : 'fixed',
+		bottom : '0',
 		// justifyContent:"center",
 		// alignItems:"center",
 		
