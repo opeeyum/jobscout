@@ -147,7 +147,7 @@ export default function CustomCard({ jobData }) {
 							>
 								<Work fontSize="small" />
 							</span>
-							{jobData?.label}
+							{jobData?.label || "Not Available"}
 						</Typography>
 						<Typography
 							variant="body2"

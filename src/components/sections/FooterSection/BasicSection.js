@@ -1,9 +1,10 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
 import React from "react";
 import Logo from "../../common/Icons/Logo";
 import { LinkedIn, MailOutline } from "@mui/icons-material";
 
 export default function BasicSection() {
+	const email = "xyz@gmail.com";
 	return (
 		<>
 			<Box
@@ -47,33 +48,26 @@ export default function BasicSection() {
 							alignItems: "center",
 						}}
 					>
-						<Typography
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								mr: 4,
+						
+							<IconButton sx={{
+								color:"white",
+								ml:-1
 							}}
-						>
-							<MailOutline
-								sx={{
-									mr: 1,
-								}}
-							/>
-							xyz@gmail.com
-						</Typography>
-						<Typography
-							sx={{
-								display: "flex",
-								alignItems: "center",
-							}}
-						>
-							<LinkedIn
-								sx={{
-									mr: 1,
-								}}
-							/>
-							xyz@gmail.com
-						</Typography>
+					onClick={() => {
+						window.open(
+							"https://mail.google.com/mail/?view=cm&fs=1&to=support@jobscout.work",
+						);
+					}}
+				><MailOutline
+				sx={{
+					mr: 1,
+				}}
+			/><Typography sx={{
+				fontSize:"16px"
+			}}>
+				support@jobscout.work
+				</Typography></IconButton>
+							
 					</Box>
 				</Box>
 			</Box>
