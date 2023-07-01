@@ -79,7 +79,7 @@ export default function BodySection() {
 				}
 				
 				<Box sx={{ width: "60%" }}>
-					{/* <CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/> */}
+					<CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/>
 				</Box>
 			</Container>
 		</div>

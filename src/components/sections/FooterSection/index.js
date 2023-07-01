@@ -20,8 +20,8 @@ export default function FooterSection() {
 		flexDirection:"column",
 		pb:4,
 		mt:16,
-		position : 'fixed',
-		bottom : '0',
+		// position : 'fixed',
+		// bottom : '0',
 		// justifyContent:"center",
 		// alignItems:"center",
 		
