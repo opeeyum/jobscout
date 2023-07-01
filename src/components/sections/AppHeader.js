@@ -10,10 +10,11 @@ import {
 	MenuItem,
 	Toolbar,
 	Tooltip,
+	Typography,
 	useMediaQuery,
 } from "@mui/material";
 import React from "react";
-
+import MenuIcon from '@mui/icons-material/Menu';
 import Logo from "../common/Icons/Logo";
 import { Login, Logout, PersonAdd, Settings } from "@mui/icons-material";
 
@@ -45,22 +46,22 @@ function AppHeader() {
 
 	return (
 		<>
-			<AppBar position="sticky"  sx={
-  
-	maxWidth?responsiveHeader:desktopHeader
+		{
+			!maxWidth && <AppBar position="sticky"  sx={desktopHeader
 	
 	
     
-  }>
+			}>
 				<Toolbar>
 					<Box
 						sx={{
-							// flexGrow: 1,
+							flexGrow: 1,
 						}}
 					>
 						<Logo />
 					</Box>
-					<Box
+					{
+						!maxWidth && <Box
 						sx={{
 							display: "flex",
 							// maxWidth: "620px",
@@ -70,7 +71,7 @@ function AppHeader() {
 							alignItems: "center",
 						}}
 					>
-						{/* <Button
+						<Button
 							variant="contained"
 							sx={{
 								backgroundColor: "#DDE6ED",
@@ -89,9 +90,9 @@ function AppHeader() {
 							onClick={() => handleLoginClick()}
 						>
 							Login
-						</Button> */}
+						</Button>
 
-						{/* <Tooltip title="Account settings">
+						<Tooltip title="Account settings">
 							<IconButton
 								onClick={handleClick}
 								size="small"
@@ -104,7 +105,7 @@ function AppHeader() {
 									T
 								</Avatar>
 							</IconButton>
-						</Tooltip> */}
+						</Tooltip>
 
 						<Menu
 							anchorEl={anchorEl}
@@ -175,8 +176,44 @@ function AppHeader() {
 							</MenuItem>
 						</Menu>
 					</Box>
+					}
+					
 				</Toolbar>
-			</AppBar>
+				</AppBar>
+		}
+
+		{
+			maxWidth && <AppBar position="sticky"  sx={
+  
+				responsiveHeader
+				
+				
+				
+			  }>
+							<Toolbar>
+								<Box
+									sx={{
+										flexGrow: 1,
+									}}
+								>
+									<Logo />
+								</Box>
+								
+								{
+									maxWidth && <Box sx={{
+										ml:"30%",
+										mr:1
+									}}>
+										
+										<MenuIcon/>
+										</Box>
+										
+								}
+								
+							</Toolbar>
+						</AppBar>
+		}
+			
 		</>
 	);
 }
