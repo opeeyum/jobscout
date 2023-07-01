@@ -13,11 +13,12 @@ import {
 	Typography,
 	useMediaQuery,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from "../common/Icons/Logo";
 import { Login, Logout, PersonAdd, Settings } from "@mui/icons-material";
-
+import TemporaryDrawer from "../common/TemporaryDrawer";
+import { Inbox as InboxIcon, Mail as MailIcon } from '@mui/icons-material';
 function AppHeader() {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -43,7 +44,18 @@ function AppHeader() {
  const desktopHeader ={
 	backgroundColor: "#537188"
  }
+ const [isDrawerOpen, setDrawerOpen] = useState(false);
 
+ const toggleDrawer = () => {
+   setDrawerOpen(!isDrawerOpen);
+ };
+ const menuItems = [
+    { text: 'Profile', icon: <InboxIcon />, onClick: handleClose },
+    { text: 'Settings', icon: <MailIcon />, onClick: handleClose },
+	{ text: 'Login', icon: <MailIcon />, onClick: handleClose },
+
+    // Add more menu items as needed
+  ];
 	return (
 		<>
 		{
@@ -199,17 +211,14 @@ function AppHeader() {
 									<Logo />
 								</Box>
 								
-								{
-									maxWidth && <Box sx={{
-										ml:"30%",
-										mr:1
-									}}>
-										
-										<MenuIcon/>
-										</Box>
-										
-								}
-								
+								{maxWidth && (
+  <React.Fragment>
+    <TemporaryDrawer anchor={<MenuIcon sx={{
+		color:"white"
+	}} />} menuItems={menuItems} open={isDrawerOpen} onClose={toggleDrawer}/>
+   
+  </React.Fragment>
+)}
 							</Toolbar>
 						</AppBar>
 		}
