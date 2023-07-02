@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, Drawer, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import OutlinedButton from './OutlinedButton';
+import PrimaryButton from './PrimaryButton';
 export default function TemporaryDrawer({ anchor, menuItems, open, onClose }) {
   const toggleDrawer = (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -30,6 +32,31 @@ justifyContent:"flex-end"
        
         {menuItems}
       </List>
+      <Box sx={{
+        position:"fixed",
+        bottom:0,
+        pb:2,
+        display:"flex",
+        width:"80%",
+        pl:2
+
+        
+      
+      }}>
+        <OutlinedButton sx={{
+height:"42px",
+mr:2,
+
+
+
+
+        }}>Clear Filters</OutlinedButton>
+        <PrimaryButton sx={{
+       
+        }}>Apply Filters</PrimaryButton>
+
+
+      </Box>
     </Box>
   );
 
@@ -48,6 +75,7 @@ justifyContent:"flex-end"
       >
         {list}
       </Drawer>
+     
     </React.Fragment>
   );
 }
