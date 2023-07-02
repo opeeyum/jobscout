@@ -32,6 +32,7 @@ export default function FooterSection() {
 	   }
 	   const basicSectionMobileStyles ={
 		width: "100%",
+		
 	   }
 
 

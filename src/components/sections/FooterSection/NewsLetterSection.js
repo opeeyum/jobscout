@@ -1,18 +1,29 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import CustomTextField from "../../common/CustomTextField";
 import { Send } from "@mui/icons-material";
 import OutlinedButton from "../../common/OutlinedButton";
 
 export default function NewsLetterSection() {
+	const maxWidth = useMediaQuery("(max-width:650px)")
+
+	const desktopStyles={
+		p: 1,
+		color: "#F6F1E9",
+		ml: 4,
+	}
+
+	const mobileStyles={
+		p: 1,
+		color: "#F6F1E9",
+		ml:2
+	}
 	return (
 		<>
 			<Box
-				sx={{
-					p: 1,
-					color: "#F6F1E9",
-					ml: 4,
-				}}
+				sx={
+					maxWidth?mobileStyles:desktopStyles
+				}
 			>
 				<Typography
 					sx={{
