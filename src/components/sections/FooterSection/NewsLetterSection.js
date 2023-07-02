@@ -16,7 +16,10 @@ export default function NewsLetterSection() {
 	const mobileStyles={
 		p: 1,
 		color: "#F6F1E9",
-		ml:2
+		ml:2,
+		borderTop:"1px solid grey",
+		mt:2,
+		mr:2
 	}
 	return (
 		<>
