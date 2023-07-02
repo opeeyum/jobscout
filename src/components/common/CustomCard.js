@@ -71,12 +71,12 @@ export default function CustomCard({ jobData }) {
 								width="70"
 								height="70"
 								style={{
-									objectFit: "contain",
+									objectFit: "cover",
 									border: "1px solid #808080",
 									borderRadius: "10px",
 								}}
 								alt="Business Operations Analyst / jobs"
-								src={jobData?.logoUrl}
+								src={jobData?.logoUrl ||"/no-img.png"}
 							/>
 						</Box>
 
