@@ -2,12 +2,13 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import BodyHeaderSection from "./BodyHeaderSection";
 import CardSection from "./CardSection";
 import FilterSection from "./FilterSection";
-import { Box, Container, useMediaQuery } from "@mui/material";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import FilterContext from "../../contexts/FilterContext";
 import SubFilterContext from "../../contexts/SubFilterContext";
 import makeApiCall from "../../../utils/makeApiCall";
 import { applyFilter } from "../../filters/applyFilters";
-
+import TemporaryDrawer from "../../common/TemporaryDrawer";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 export default function BodySection() {
 	const {filters, setFilters} = useContext(FilterContext);
 	const {subFilters, setSubFilters} = useContext(SubFilterContext);
@@ -52,6 +53,14 @@ export default function BodySection() {
 
 	const maxWidth = useMediaQuery("(max-width:650px)")
 
+	const [isDrawerOpen, setDrawerOpen] = useState(false);
+
+	const toggleDrawer = () => {
+	  setDrawerOpen(!isDrawerOpen);
+	};
+	const menuItems = <FilterSection { ...{ subFilters, setSubFilters } }/>
+	   
+   
 	return (
 		<div>
 			<BodyHeaderSection {...{filters, setFilters, onApplyFilterHandler}}/>
@@ -83,6 +92,24 @@ export default function BodySection() {
 					maxWidth && <><Box sx={ {
 						
 					} }>
+						<Box sx={{
+							display:"flex",
+						
+						  justifyContent:"flex-end",
+							p:1,
+						//  backgroundColor:"#D3D3D3",
+							mb:2,
+							mr:-2,
+							// cursor:"pointer"
+
+
+
+						}}><TemporaryDrawer anchor={<><Typography sx={{
+							fontWeight:"bold",
+							 mr:1
+						}}>Apply Filters</Typography><FilterAltIcon sx={{
+							color:"black"
+						}} /> </> } menuItems={menuItems} open={isDrawerOpen} onClose={toggleDrawer}/></Box>
 							<CardSection { ...{ loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount } } />
 						</Box></>
 				}

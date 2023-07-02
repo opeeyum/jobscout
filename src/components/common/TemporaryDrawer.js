@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Drawer, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton } from '@mui/material';
-
+import CloseIcon from '@mui/icons-material/Close';
 export default function TemporaryDrawer({ anchor, menuItems, open, onClose }) {
   const toggleDrawer = (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -12,24 +12,23 @@ export default function TemporaryDrawer({ anchor, menuItems, open, onClose }) {
 
   const list = (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 350 }}
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 300 ,p:2,mt:4}}
       role="presentation"
-      onClick={toggleDrawer}
-      onKeyDown={toggleDrawer}
+     
     >
+      <Box sx={{
+ mb:2,
+ mt:-2,
+ display:"flex",
+justifyContent:"flex-end"
+      }}  onClick={toggleDrawer}
+      onKeyDown={toggleDrawer}> 
+  <IconButton ><CloseIcon/></IconButton>
+      </Box>
+    
       <List>
-        {menuItems.map((menuItem, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton onClick={menuItem.onClick}>
-              <ListItemIcon>
-                {menuItem.icon}
-              </ListItemIcon>
-              <ListItemText sx={{
-                ml:-2
-              }} primary={menuItem.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+       
+        {menuItems}
       </List>
     </Box>
   );
@@ -37,10 +36,10 @@ export default function TemporaryDrawer({ anchor, menuItems, open, onClose }) {
   return (
     <React.Fragment>
       <IconButton sx={{
-      ml: "20%",
-      mr: 1
+      // ml: "20%",
+      // mr: 1
     }} onClick={toggleDrawer}>
-        {anchor}
+        {anchor} 
       </IconButton>
       <Drawer
         anchor="left"
