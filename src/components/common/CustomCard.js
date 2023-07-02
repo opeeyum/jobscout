@@ -12,6 +12,7 @@ import {
 	CardContent,
 	IconButton,
 	Typography,
+	useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import OutlinedButton from "./OutlinedButton";
@@ -43,6 +44,8 @@ export default function CustomCard({ jobData }) {
 	if (daysDiff <= 0) {
 		dateOutput = "Today";
 	}
+
+	const maxWidth = useMediaQuery("(max-width:450px)")
 
 	return (
 		<>
@@ -112,7 +115,7 @@ export default function CustomCard({ jobData }) {
 					<Box
 						sx={{
 							display: "flex",
-							alignItems: "center",
+							alignItems: "flex-start",
 							justifyContent: "space-between",
 						}}
 					>
@@ -121,6 +124,7 @@ export default function CustomCard({ jobData }) {
 							color="text.secondary"
 							sx={{
 								display: "flex",
+								mr:1
 							}}
 						>
 							<span
