@@ -63,24 +63,30 @@ export default function BodySection() {
 				}}
 			>
 				{
-					!maxWidth && <Box
-					sx={{
-						width: "40%",
-						position: "sticky",
-						top: 110,
-						maxHeight: "80vh",
-						// overflowY: "scroll",
-						zIndex: 999,
-						marginRight: 10,
-					}}
-				>
-					<FilterSection {...{subFilters, setSubFilters}}/>
-				</Box>
+					!maxWidth && <><Box
+						sx={ {
+							width: "40%",
+							position: "sticky",
+							top: 110,
+							maxHeight: "80vh",
+							// overflowY: "scroll",
+							zIndex: 999,
+							marginRight: 10,
+						} }
+					>
+						<FilterSection { ...{ subFilters, setSubFilters } } />
+					</Box><Box sx={ { width: "60%" } }>
+							<CardSection { ...{ loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount } } />
+						</Box></>
+				}
+				{
+					maxWidth && <><Box sx={ {
+						
+					} }>
+							<CardSection { ...{ loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount } } />
+						</Box></>
 				}
 				
-				<Box sx={{ width: "60%" }}>
-					<CardSection {...{loading, allJobs, handlePageChange, currentPage, itemsPerPage, jobCount}}/>
-				</Box>
 			</Container>
 		</div>
 	);
