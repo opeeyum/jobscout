@@ -61,7 +61,7 @@ export default function JobDetailSection() {
                     : "Remote"
                 }
                 href={allJobs.value.applyLink}
-                companyHref={allJobs.value.companyDetail.key}
+                companyHref={allJobs?.value?.companyDetails[0]?.key}
               />
             )}
           </Container>
