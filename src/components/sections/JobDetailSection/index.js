@@ -16,7 +16,7 @@ export default function JobDetailSection() {
   useEffect(() => {
     (async function getJobData() {
       const resp = await makeApiCall('GET', `/data/jobDetail/${jobId}`);
-      setAllJobs(resp.data);
+      setAllJobs(resp.data.value.finalData);
       console.log(resp.data);
 
       // Introduce a delay of 500 milliseconds (adjust as needed)
@@ -52,16 +52,16 @@ export default function JobDetailSection() {
           >
             {allJobs && (
               <JobDetailHeaderSection
-                src={allJobs.value.logoUrl || "/no-img.png" }
-                title={allJobs.value.title}
-                companyName={allJobs.value.companyName}
+                src={allJobs?.logoUrl || "/no-img.png" }
+                title={allJobs?.title}
+                companyName={allJobs?.companyName}
                 locations={
-                  allJobs.value.wfhType === "0"
-                    ? allJobs.value.locations
+                  allJobs?.wfhType === "0"
+                    ? allJobs?.locations
                     : "Remote"
                 }
-                href={allJobs.value.applyLink}
-                companyHref={allJobs?.value?.companyDetails[0]?.key}
+                href={allJobs?.applyLink}
+                companyHref={allJobs?.companyDetails[0]?.key}
               />
             )}
           </Container>
@@ -76,7 +76,7 @@ export default function JobDetailSection() {
           >
             {allJobs && (
               <JobDetailDescriptionSection
-                description={allJobs.value.description}
+                description={allJobs.description}
               />
             )}
           </Container>
@@ -88,9 +88,9 @@ export default function JobDetailSection() {
               backgroundColor: "white",
             }}
           >
-            {allJobs && <AdditionalInfoSection Location={ allJobs.value.wfhType === "0"
-                    ? allJobs.value.locations
-                    : "Remote"} Salary={allJobs.value.salaryDetail || "N/A"} Role={allJobs.value.roleCategory || "N/A"} Type={allJobs.value.label || "N/A"} />}
+            {allJobs && <AdditionalInfoSection Location={ allJobs.wfhType === "0"
+                    ? allJobs.locations
+                    : "Remote"} Salary={allJobs.salaryDetail || "N/A"} Role={allJobs.roleCategory || "N/A"} Type={allJobs.label || "N/A"} />}
           </Container>
         </Box>
       )}
