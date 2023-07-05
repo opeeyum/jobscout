@@ -27,7 +27,7 @@ export default function CompanyInfoSection() {
 	// console.log(company?.linkedin?.bannerURl, "detail page data");
 
 	const handleVisitWebsite = () => {
-		const link = company?.value?.linkedin?.website || company?.value?.value?.linkedin?.website;
+		const link = company?.value?.jsonData?.aboutSectionViewModel?.aboutCompany?.websiteUrl?.url || company?.value?.jsonData?.value?.linkedin?.website;
 		window.open(link, "_blank");
 	};
 
@@ -79,7 +79,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									 company?.value?.linkedin?.bannerURl || company?.value?.value?.linkedin?.bannerURl ||
+									company?.value?.jsonData?.companyPageHeader?.headerImage.headerImageUrl || company?.value?.value?.linkedin?.bannerURl ||
 									"/Image_not_available.png"
 								}
 							/>
@@ -98,7 +98,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									company?.value?.linkedin?.logoUrl || company?.value?.value?.linkedin?.logoUrl ||
+									company?.value?.jsonData?.companyPageHeader?.logoUrl || company?.value?.value?.linkedin?.logoUrl ||
 									company?.value?.crawlerData?.logoUrl ||
 									"/no-img.png"
 								}
@@ -124,7 +124,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 										lineHeight: "38px",
 									}}
 								>
-									{company?.value?.linkedin?.nameText || company?.value?.value?.linkedin?.nameText ||
+									{company?.value?.jsonData?.companyName || company?.value?.value?.linkedin?.nameText ||
 										company?.value?.crawlerData
 											?.companyName}
 								</Typography>
@@ -137,7 +137,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 										variant="body1"
 										color="text.secondary"
 									>
-										{company?.value?.linkedin?.sectorText || company?.value?.value?.linkedin?.sectorText ||
+										{company?.value?.jsonData?.aboutSectionViewModel?.aboutCompany?.sectorNames[0] || company?.value?.value?.linkedin?.sectorText ||
 											company?.value?.crawlerData
 												?.industry}
 									</Typography>
@@ -176,7 +176,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 									variant="body1"
 									color="text.secondary"
 								>
-									{company?.value?.linkedin?.addressText || company?.value?.value?.linkedin?.addressText ||
+									{company?.value?.jsonData?.aboutSectionViewModel?.aboutCompany?.headquartersLocation?.address || company?.value?.value?.linkedin?.addressText ||
 										company?.value?.crawlerData?.location}
 								</Typography>
 							</Box>
