@@ -79,7 +79,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 								alt="Business Operations Analyst / jobs"
 								// src={src}
 								src={
-									company?.value?.jsonData?.companyPageHeader?.headerImage.headerImageUrl || company?.value?.value?.linkedin?.bannerURl ||
+									company?.value?.jsonData?.companyPageHeader?.headerImage?.headerImageUrl || company?.value?.value?.linkedin?.bannerURl ||
 									"/Image_not_available.png"
 								}
 							/>
@@ -219,7 +219,7 @@ const salaryData = company?.value?.ambitionBox?.salaryData || company?.value?.va
 							About
 						</Typography>
 						<Typography sx={{ mt: 1 }}>
-							{company?.value?.linkedin?.aboutText || company?.value?.value?.linkedin?.aboutText}
+							{company?.value?.jsonData?.aboutSectionViewModel?.aboutCompany?.description || company?.value?.value?.linkedin?.aboutText}
 						</Typography>
 					</Container>
 					}
